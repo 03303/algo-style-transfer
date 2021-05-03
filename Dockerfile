@@ -13,13 +13,9 @@ RUN apt-get update && \
     nano \
     curl
 
-# # OpenCV dependencies
-# RUN apt-get install -y libglib2.0-0 libsm6 libxext6 libxrender-dev
-
-# RUN cd ${SINGNET_REPOS} && \
-#     git clone -b ${git_branch} https://github.com/${git_owner}/${DNN_REPO_NAME}.git
-
 ADD . .
 
 RUN python -m pip install -U pip && \
     python -m pip install -r requirements.txt
+
+CMD python service/run_server.py
